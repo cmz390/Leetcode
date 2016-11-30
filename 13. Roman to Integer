@@ -1,0 +1,32 @@
+public class Solution {
+    public int roman(char a)
+    {
+        switch (a){
+        case 'I': return 1;
+        case 'V': return 5;
+        case 'X': return 10;
+        case 'L': return 50;
+        case 'C': return 100;
+        case 'D': return 500;
+        case 'M': return 1000;
+        }
+    
+        return 0;
+    }
+    public int romanToInt(String s) {
+        int result = 0;
+        int temp1,temp2;
+        for(int i = 0; i< s.length(); i++)
+        {   temp1 = roman(s.charAt(i));
+            if(i < s.length()-1) 
+            {
+                temp2 = roman(s.charAt(i+1));
+                if(temp1 < temp2) result = result - temp1 ;
+                else result = result + temp1;
+             }
+             else result += temp1;
+            
+        }
+        return result;
+    }
+}
