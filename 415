@@ -1,0 +1,70 @@
+import java.util.*;
+
+public class Solution {
+  public String addStrings(String num1, String num2)
+  {
+    int l1 = num1.length();
+    int l2 = num2.length();
+    String temp = "";
+    int adder = 0;
+    int digit = 0;
+    int i;
+    if(l1 > l2)
+    {
+      for(i = 0; i < l2; i++)
+      {
+          digit = num1.charAt(l1-1-i) + num2.charAt(l2-1-i) - '1' -'1' +1 +1 + adder;
+          if(digit >= 10)
+          {
+            digit %=10;
+            adder = 1;
+          }
+          else adder = 0;
+          temp = Integer.toString(digit) + temp;
+      }
+
+      for(; i < l1; i++)
+      {
+        digit = num1.charAt(l1-1-i) - '1' + 1 +adder;
+        if(digit >= 10)
+        {
+          digit %=10;
+          adder = 1;
+        }
+        else adder = 0;
+        temp = Integer.toString(digit) + temp;
+      }
+
+    }
+    else
+    {
+      for(i = 0; i < l1; i++)
+      {
+          digit = num1.charAt(l1-1-i) + num2.charAt(l2-1-i) - '1' -'1' +1 +1 + adder;
+          if(digit >= 10)
+          {
+            digit %=10;
+            adder = 1;
+          }
+          else adder = 0;
+          temp =Integer.toString(digit) + temp;
+      }
+
+      for(; i < l2; i++)
+      {
+        digit = num2.charAt(l2-1-i) - '1' + 1 +adder;
+        if(digit >= 10)
+        {
+          digit %=10;
+          adder = 1;
+        }
+        else adder = 0;
+        temp = Integer.toString(digit) + temp;
+      }
+    }
+
+    if(adder == 1) temp ="1" + temp;
+    //String result = new StringBuilder(temp).reverse().toString();
+    return temp;
+  }
+}

@@ -1,0 +1,15 @@
+import java.util.*;
+
+public class Solution {
+    public int findContentChildren(int[] g, int[] s) {
+        Arrays.sort(g);
+        Arrays.sort(s);
+        int j,k=0,result=0;
+        for(int i:s)
+          {
+            for(j=k; j<g.length;j++)
+              if(i>=g[j]) {k=j+1;result++;break;}
+          }
+          return result;
+    }
+}

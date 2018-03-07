@@ -1,0 +1,33 @@
+public class Solution {
+    public int numberOfArithmeticSlices(int[] A) {
+       int P, Q, C, D, M;
+       int N = A.length;
+       C=0;
+       for(P=0; P< N-2; P++)
+            for(Q=P+2; Q<N; Q++)
+            {   D=A[P+1]-A[P];
+                M=0;
+                for(int i=P+2; i<=Q; i++)
+                {
+                 if((A[i]-A[i-1])!=D) {M=1;break; }  
+                }
+                if(M==0) C++;
+            }
+        return C;
+    }
+}
+
+
+//a good solution
+
+public int numberOfArithmeticSlices(int[] A) {
+    int curr = 0, sum = 0;
+    for (int i=2; i<A.length; i++)
+        if (A[i]-A[i-1] == A[i-1]-A[i-2]) {
+            curr += 1;
+            sum += curr;
+        } else {
+            curr = 0;
+        }
+    return sum;
+}
